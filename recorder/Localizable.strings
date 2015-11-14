@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  recorder
+
+  Created by mryoshio on 2015/11/14.
+  Copyright © 2015年 tachibanakikaku. All rights reserved.
+*/
+
+"view.property.name" = "名前";
+"view.property.name.placeholder" = "やまだ　たろう";
+"view.property.groupID" = "グループID";
+"view.property.groupID.placeholder" = "tachibanakikaku";

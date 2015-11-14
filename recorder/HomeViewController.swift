@@ -1,25 +1,23 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  recorder
 //
 //  Created by mryoshio on 2015/11/14.
 //  Copyright © 2015年 tachibanakikaku. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
-
+class HomeViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.addSubview(HomeView(frame: self.view.frame))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-
 }
-
