@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 
-class PropertyView: UIView {
+class PropertyView: UIView, UITextFieldDelegate {
 
-    var nameLabel: UILabel!
-    var nameText: UITextField!
-    var groupLabel: UILabel!
-    var groupText: UITextField!
+    lazy var nameLabel: UILabel = UILabel()
+    lazy var nameText: UITextField = UITextField()
+    lazy var groupLabel: UILabel = UILabel()
+    lazy var groupText: UITextField = UITextField()
+    
+    lazy var ud: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+
+    enum Text: Int {
+        case Name
+        case GroupID
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +44,9 @@ class PropertyView: UIView {
         nameText.clearButtonMode = .Always
         nameText.placeholder = NSLocalizedString("view.property.name.placeholder", comment: "name placeholder")
         nameText.returnKeyType = .Done
+        nameText.delegate = self
+        nameText.tag = Text.Name.rawValue
+        nameText.text = ud.stringForKey(ConstantUtil.name)
         nameText.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(nameLabel)
@@ -54,10 +64,29 @@ class PropertyView: UIView {
         groupText.clearButtonMode = .Always
         groupText.placeholder = NSLocalizedString("view.property.groupID.placeholder", comment: "group ID placeholder")
         groupText.returnKeyType = .Done
+        groupText.delegate = self
+        groupText.tag = Text.GroupID.rawValue
+        groupText.text = ud.stringForKey(ConstantUtil.groupId)
         groupText.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(groupLabel)
         addSubview(groupText)
+    }
+
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        switch textField.tag {
+        case Text.Name.rawValue:
+            ud.setObject(textField.text, forKey: ConstantUtil.name)
+        case Text.GroupID.rawValue:
+            ud.setObject(textField.text, forKey: ConstantUtil.groupId)
+        default:
+            fatalError("Invalid text end editting!")
+        }
     }
 
     func addConstraints() {

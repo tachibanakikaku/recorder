@@ -11,21 +11,26 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    var homeView: HomeViewController!
-    var propertyView: PropertyViewController!
-    
+    var homeViewController: HomeViewController!
+    var propertyViewController: PropertyViewController!
+
+    enum TabBar: Int {
+        case HomeViewController
+        case PropertyViewController
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        homeView = HomeViewController()
-        homeView.tabBarItem = UITabBarItem(tabBarSystemItem: .Featured, tag: 0)
+        homeViewController = HomeViewController()
+        homeViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .Featured, tag: TabBar.HomeViewController.rawValue)
 
-        propertyView = PropertyViewController()
-        propertyView.tabBarItem = UITabBarItem(tabBarSystemItem: .Contacts, tag: 1)
+        propertyViewController = PropertyViewController()
+        propertyViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .Contacts, tag: TabBar.PropertyViewController.rawValue)
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        self.setViewControllers([homeView, propertyView], animated: true)
+        self.setViewControllers([homeViewController, propertyViewController], animated: true)
     }
 
 }

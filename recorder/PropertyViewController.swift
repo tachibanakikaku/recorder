@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class PropertyViewController: UIViewController {
+class PropertyViewController: UIViewController, UITabBarDelegate {
+    
+    lazy var propertyView: PropertyView = PropertyView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +21,13 @@ class PropertyViewController: UIViewController {
         let y = (self.view.frame.height - self.view.frame.height * ratioToSuper) / 2
         let w = self.view.frame.width * ratioToSuper
         let h = self.view.frame.height * ratioToSuper
-        self.view.addSubview(PropertyView(frame: CGRectMake(x, y, w, h)))
+        
+        propertyView.frame = CGRectMake(x, y, w, h)
+        self.view.addSubview(propertyView)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
 }

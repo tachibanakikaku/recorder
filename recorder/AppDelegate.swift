@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
+
+    let beaconManager = ESTBeaconManager()
 
     var window: UIWindow?
 
@@ -21,7 +23,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MainViewController()
         self.window?.makeKeyAndVisible()
 
+        // Estimote
+
+//        self.beaconManager.requestStateForRegion(clRegion)
+        self.beaconManager.delegate = self
+        self.beaconManager.requestAlwaysAuthorization()
+        self.beaconManager.startMonitoringForRegion(ConstantUtil.beaconRegion)
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
+        
         return true
+    }
+
+    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
+        let notification = UILocalNotification()
+        notification.alertBody =
+            "Your gate closes in 47 minutes. " +
+            "Current security wait time is 15 minutes, " +
+            "and it's a 5 minute walk from security to the gate. " +
+        "Looks like you've got plenty of time!"
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
     }
 
     func applicationWillResignActive(application: UIApplication) {
