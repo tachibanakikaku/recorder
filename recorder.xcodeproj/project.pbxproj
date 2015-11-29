@@ -20,6 +20,7 @@
 		1474D6411BF6E58200B47F95 /* recorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474D6401BF6E58200B47F95 /* recorderUITests.swift */; };
 		1474D6501BF6E8A300B47F95 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474D64F1BF6E8A300B47F95 /* HomeViewController.swift */; };
 		1474D6541BF6EAEE00B47F95 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1474D6531BF6EAEE00B47F95 /* HomeView.swift */; };
+		4E7710B61C0AF30B00840961 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7710B51C0AF30B00840961 /* DateTimeUtil.swift */; };
 		4EDFFB721C097E7100BF3B1B /* ConstantUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDFFB711C097E7100BF3B1B /* ConstantUtil.swift */; };
 		6FC619D3991A3F6002D109EA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5860A8D136797092D14196B3 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		1474D6421BF6E58200B47F95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1474D64F1BF6E8A300B47F95 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1474D6531BF6EAEE00B47F95 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4E7710B51C0AF30B00840961 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		4EDFFB711C097E7100BF3B1B /* ConstantUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantUtil.swift; sourceTree = "<group>"; };
 		4EDFFB731C0983EE00BF3B1B /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		5860A8D136797092D14196B3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				142DDF111BF7034F000ADE09 /* ColorUtil.swift */,
 				4EDFFB711C097E7100BF3B1B /* ConstantUtil.swift */,
 				4EDFFB731C0983EE00BF3B1B /* ObjCBridge.h */,
+				4E7710B51C0AF30B00840961 /* DateTimeUtil.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E7710B61C0AF30B00840961 /* DateTimeUtil.swift in Sources */,
 				142DDF121BF7034F000ADE09 /* ColorUtil.swift in Sources */,
 				142DDF0B1BF6F7FE000ADE09 /* PropertyViewController.swift in Sources */,
 				1474D6501BF6E8A300B47F95 /* HomeViewController.swift in Sources */,

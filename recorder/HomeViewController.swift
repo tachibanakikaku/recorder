@@ -13,6 +13,11 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate {
 
     let beaconManager = ESTBeaconManager()
 
+    lazy var major: Int = Int(ConstantUtil.ud.valueForKey(ConstantUtil.major) as! String)!
+    lazy var minor: Int = Int(ConstantUtil.ud.valueForKey(ConstantUtil.minor) as! String)!
+
+    lazy var rangedBeacons = [String: [NSDate]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(HomeView(frame: self.view.frame))
@@ -21,19 +26,28 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate {
         self.beaconManager.requestAlwaysAuthorization()
     }
 
-    func placesNearBeacon(beacon: CLBeacon) -> Dictionary<String, AnyObject> {
-        let beaconKey = "\(beacon.major):\(beacon.minor)"
-        if let hitBeaconInfo = ConstantUtil.placesByBeacons[beaconKey] {
-            return hitBeaconInfo
-        }
-        return [String: AnyObject]()
-    }
-
     func beaconManager(manager: AnyObject, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
         if let nearestBeacon = beacons.first {
-            let places = placesNearBeacon(nearestBeacon)
-            print(places)
+            if nearestBeacon.major == major && nearestBeacon.minor == minor {
+                let key = "\(major):\(minor)"
+                if rangedBeacons.indexForKey(key) == nil {
+                    rangedBeacons.updateValue([NSDate()], forKey: key)
+                    print("first: \(rangedBeacons)")
+                } else {
+                    let now: NSDate = NSDate()
+                    let past = rangedBeacons[key]!.last!
+                    if now.timeIntervalSinceDate(past) > DateTimeUtil.record_interval_seconds {
+                        sendToServer(key, datetime: now)
+                        rangedBeacons[key]?.append(now)
+                        print("\(rangedBeacons[key]!.count): \(rangedBeacons)")
+                    }
+                }
+            }
         }
+    }
+
+    private func sendToServer(key: String, datetime: NSDate) {
+        // clear Array: rangedBeacons.indexForKey(key) if succeed in send to server
     }
 
     override func didReceiveMemoryWarning() {

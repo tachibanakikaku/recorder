@@ -10,3 +10,7 @@
 "view.property.name.placeholder" = "例）やまだ　たろう";
 "view.property.groupID" = "グループID";
 "view.property.groupID.placeholder" = "例）tachibanakikaku";
+"view.property.major" = "Major";
+"view.property.major.placeholder" = "例）12345";
+"view.property.minor" = "Minor";
+"view.property.minor.placeholder" = "例）12345";
