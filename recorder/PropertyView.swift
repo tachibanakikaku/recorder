@@ -19,6 +19,7 @@ class PropertyView: UIView, UITextFieldDelegate {
     lazy var majorText: UITextField = UITextField()
     lazy var minorLabel: UILabel = UILabel()
     lazy var minorText: UITextField = UITextField()
+    lazy var activeTextField: UITextField = UITextField()
 
     enum Text: Int {
         case Name
@@ -161,6 +162,10 @@ class PropertyView: UIView, UITextFieldDelegate {
         default:
             fatalError("Invalid Done tapped!")
         }
+    }
+
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeTextField = textField
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {

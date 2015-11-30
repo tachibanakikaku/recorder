@@ -29,7 +29,6 @@ class MainViewController: UITabBarController {
         propertyViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .Contacts, tag: TabBar.PropertyViewController.rawValue)
         
         self.view.backgroundColor = UIColor.whiteColor()
-        
         self.setViewControllers([homeViewController, propertyViewController], animated: true)
     }
 
