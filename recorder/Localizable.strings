@@ -6,6 +6,9 @@
   Copyright © 2015年 tachibanakikaku. All rights reserved.
 */
 
+"view.property.lastRangedAt" = "最新ビーコン検知時刻";
+"view.property.lastSentAtLabel" = "最新サーバ送信時刻";
+
 "view.property.name" = "名前";
 "view.property.name.placeholder" = "例）やまだ　たろう";
 "view.property.groupID" = "グループID";
