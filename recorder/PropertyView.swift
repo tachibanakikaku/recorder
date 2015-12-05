@@ -200,21 +200,22 @@ class PropertyView: UIView, UITextFieldDelegate {
             "minorLabel":minorLabel,
             "minorText":minorText
         ]
-        
+
         let metrics = [
             "h_padding":30.0,
+            "v_padding_h":30.0,
             "v_padding":20.0,
             "v_item_padding":40.0
         ]
-        
+
         let h_name_label = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[nameLabel]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
-        
+
         let h_name_text = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[nameText]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
-        
+
         let h_group_label = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[groupLabel]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
-        
+
         let h_group_text = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[groupText]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
-        
+
         let h_major_label = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[majorLabel]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
 
         let h_major_text = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[majorText]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
@@ -223,7 +224,7 @@ class PropertyView: UIView, UITextFieldDelegate {
 
         let h_minor_text = NSLayoutConstraint.constraintsWithVisualFormat("|-h_padding-[minorText]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: views)
 
-        let v_label = NSLayoutConstraint.constraintsWithVisualFormat("V:|-v_item_padding-[nameLabel]-v_padding-[nameText]-v_item_padding-[groupLabel]-v_padding-[groupText]-v_item_padding-[majorLabel]-v_padding-[majorText]-v_item_padding-[minorLabel]-v_padding-[minorText]", options: NSLayoutFormatOptions.AlignAllLeft, metrics: metrics, views: views)
+        let v_label = NSLayoutConstraint.constraintsWithVisualFormat("V:|-v_padding_h-[nameLabel]-v_padding-[nameText]-v_item_padding-[groupLabel]-v_padding-[groupText]-v_item_padding-[majorLabel]-v_padding-[majorText]-v_item_padding-[minorLabel]-v_padding-[minorText]", options: NSLayoutFormatOptions.AlignAllLeft, metrics: metrics, views: views)
 
         addConstraints(h_name_label)
         addConstraints(h_name_text)
