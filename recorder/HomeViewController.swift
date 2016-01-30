@@ -6,6 +6,7 @@
 //  Copyright © 2015年 tachibanakikaku. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import UIKit
 
@@ -47,8 +48,7 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate {
 
                     if now.timeIntervalSinceDate(past) > DateTimeUtil.record_interval_seconds {
                         if sendToServer(key, datetime: now) {
-                            // TODO: clear Array, rangedBeacons.indexForKey(key)
-
+                            rangedBeacons[key] = nil
                             (self.view as! HomeView).lastSentAtText.text = dateFormatter.stringFromDate(now)
                         }
                         rangedBeacons[key]?.append(now)
@@ -60,7 +60,25 @@ class HomeViewController: UIViewController, ESTBeaconManagerDelegate {
     }
 
     private func sendToServer(key: String, datetime: NSDate) -> Bool {
-        // send to server
+        let url: String = "https://teru@liferay.com:ttt@nakura1977.cloudapp.net/api/jsonws/sample-portlet.foo/add-foo"
+        let major = ConstantUtil.ud.stringForKey(ConstantUtil.major)
+        let minor = ConstantUtil.ud.stringForKey(ConstantUtil.minor)
+        var params = [String: AnyObject]()
+        params[ConstantUtil.name] = ConstantUtil.ud.stringForKey(ConstantUtil.name)
+        params[ConstantUtil.groupId] = ConstantUtil.ud.stringForKey(ConstantUtil.groupId)
+        params[ConstantUtil.major] = major
+        params[ConstantUtil.minor] = minor
+        params["DATA"] =  rangedBeacons[major! + ":" + minor!]!.map { dateFormatter.stringFromDate($0) }
+
+        request(.POST, url, parameters: params, encoding: .JSON).responseJSON {
+            response in
+            print(response)
+
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
+        }
         return true
     }
 

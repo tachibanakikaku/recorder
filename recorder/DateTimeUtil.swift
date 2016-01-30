@@ -9,5 +9,5 @@
 import Foundation
 
 class DateTimeUtil {
-    static let record_interval_seconds: Double = 600.0 // 10 minutes
+    static let record_interval_seconds: Double = 10.0 // 10 minutes
 }

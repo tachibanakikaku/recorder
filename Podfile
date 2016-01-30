@@ -1,2 +1,5 @@
-pod 'AFNetworking', '~> 2.0'
+platform :ios, '8.0'
+use_frameworks!
+
 pod 'EstimoteSDK'
+pod 'Alamofire', '~> 3.0'
